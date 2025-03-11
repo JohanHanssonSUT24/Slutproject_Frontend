@@ -45,6 +45,7 @@ function renderLinks() {
 
     const button = document.createElement("button");
     button.textContent = "Ta bort";
+    button.classList.add("remove-btn");
     button.onclick = () => removeLink(index);
 
     const div = document.createElement("div");
