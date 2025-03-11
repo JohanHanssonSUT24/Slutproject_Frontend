@@ -29,7 +29,7 @@ body {
 }
 #clock {
   font-size: 2rem;
-  margin-top: 30px;
+  margin-top: 9%;
   margin-bottom: 10px;
   color: rgb(13, 99, 175);
 }
@@ -68,7 +68,8 @@ body {
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.3);
 }
-h3 {
+h3,
+h2 {
   margin-top: 0;
   color: rgb(44, 65, 84);
 }
@@ -94,6 +95,12 @@ button {
 button:hover {
   background-color: #0097a7;
 }
+#link-list img {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
 #link-list a {
   text-decoration: none;
   color: #f26012;
@@ -106,7 +113,6 @@ button:hover {
 #link-list div {
   margin-bottom: 10px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 .remove-btn {

@@ -43,12 +43,22 @@ function renderLinks() {
     a.target = "_blank";
     a.textContent = link.linkName;
 
+    const favicon = document.createElement("img");
+    favicon.src = `https://www.google.com/s2/favicons?domain=${
+      new URL(link.url).hostname
+    }`;
+    favicon.alt = "Facivon";
+    favicon.style.width = "16px";
+    favicon.style.height = "16px";
+    favicon.style.marginRight = "10px";
+
     const button = document.createElement("button");
     button.textContent = "Ta bort";
     button.classList.add("remove-btn");
     button.onclick = () => removeLink(index);
 
     const div = document.createElement("div");
+    div.appendChild(favicon);
     div.appendChild(a);
     div.appendChild(button);
 
