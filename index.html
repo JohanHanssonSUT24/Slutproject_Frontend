@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="stylesheet.css" />
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <main>
+      <div id="dashboard">
+        <section id="top">
+          <div id="clock">
+            <h2 id="clockloader">Laddar tid...</h2>
+          </div>
+          <div id="greeting">
+            <h1 id="headline">Välkommen Johan</h1>
+          </div>
+        </section>
+      <div id="columns">
+        <section id="links-column" class="column">
+          <h3>Mina favoriter</h3>
+          <ul id="link-list"></ul>
+          <button id="add-link">Lägg till en länk</button>
+        </section>
+  
+        <section id="weather-column" class="column">
+          <h3>Väder</h3>
+          <div id="weather">Laddar väder...</div>
+          <input type="text" id="city-input" placeholder="Ange stad"/>
+          <button id="weather-button">Sök väder</button>
+          <p id="error-message" style="color: red;"></p>
+        </section>
+  
+        <section id="team-column" class="column">
+          <h3>Sök ett lag</h3>
+          <input type="text" id="team-input" placeholder="Skriv lagets namn"/>
+          <button id="search-team">Sök</button>
+          <div id="team-info" style="display: none;">Laddar laget...</div>
+          <div id="last-matches"></div>
+        </section>
+  
+        <section id="notes-column" class="column">
+          <h3>Anteckningar</h3>
+          <textarea name="my-notes" id="notes"></textarea>
+        </section>
+
+      
+      </div>
+      <section id="random-background">
+        <button id="background-button">Ny bakgrund</button>
+      </section>
+    </main>
+    <footer>
+      <p>&#169;All rights reserved Johan Hansson 2025</p>
+    </footer>
+    <script src="dashboard.js"></script>
+  </body>
+</html>
