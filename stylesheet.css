@@ -28,14 +28,16 @@ body {
   margin-bottom: 20px;
 }
 #clock {
-  font-size: 2rem;
+  font-size: 1rem;
   margin-top: 9%;
   margin-bottom: 10px;
   color: rgb(13, 99, 175);
+  text-shadow: 1px 1px 5px #1d1d1d;
 }
 #greeting h1 {
   font-size: 1.8rem;
   color: rgb(228, 117, 32);
+  text-shadow: 1px 1px 5px #1d1d1d;
 }
 #columns {
   display: grid;
@@ -47,11 +49,11 @@ body {
 #greeting {
   background-color: rgba(255, 255, 255, 0.2);
   padding: 15px;
-  border-radius: 8px;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
-  -o-border-radius: 8px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.3);
@@ -91,6 +93,7 @@ button {
   -o-border-radius: 8px;
   cursor: pointer;
   margin-top: 10px;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.1);
 }
 button:hover {
   background-color: #0097a7;
@@ -103,7 +106,8 @@ button:hover {
 }
 #link-list a {
   text-decoration: none;
-  color: #f26012;
+  color: #43dc50;
+  text-shadow: 1px 1px 5px #1d1d1d;
   font-size: 20px;
   margin-right: 10px;
 }
@@ -128,6 +132,7 @@ button:hover {
   -o-border-radius: 5px;
   border: none;
   cursor: pointer;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.1);
 }
 #link-list button {
   margin-left: 10px;
@@ -202,6 +207,7 @@ input[type="text"]:focus {
   -o-border-radius: 8px;
   cursor: pointer;
   width: 100%;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.1);
 }
 #team-column button:hover {
   background-color: #0097a7;

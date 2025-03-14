@@ -84,6 +84,7 @@ const errorMessage = document.getElementById("error-message");
 
 window.addEventListener("load", () => {
   getWeatherData("Tvååker");
+  getWeatherByGeo();
 });
 
 searchWeather.addEventListener("click", () => {
@@ -94,7 +95,42 @@ searchWeather.addEventListener("click", () => {
     showError("Vänligen ange en stad.");
   }
 });
+async function getWeatherByGeo() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const lat = position.coords.latitude;
+        const long = position.coords.longitude;
+        getWeatherByCoordinates(lat, long);
+      },
+      (error) => {
+        console.error("Geolocation error", error);
+        getWeatherData("Tvååker");
+      }
+    );
+  } else {
+    console.log("Geolocation not supported.");
+    getWeatherData("Tvååker");
+  }
+}
+async function getWeatherByCoordinates(lat, long) {
+  try {
+    weatherElement.innerHTML = "<p>Hämtar väder...</p>";
+    errorMessage.textContent = "";
 
+    const url = `${BASE_URL}?lat=${lat}&long${long}&units=metric&appid=${API_KEY}`;
+
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data = await response.json();
+    displayWeatherData(data);
+  } catch (error) {
+    console.error("Error fetching weather!");
+    showError("Kunde inte hämta väderdata. Försök igen.");
+  }
+}
 async function getWeatherData(city) {
   if (!city) {
     showError("Ange en stad som finns.");
@@ -115,22 +151,23 @@ async function getWeatherData(city) {
   } catch (error) {
     console.error("Error fetching weather!");
     if (error.message.includes("404")) {
-      showError("City not found");
+      showError("Staden hittades inte");
     } else {
-      showError("Failed to fetch weather data. Please try again.");
+      showError("Kunde inte hämta väderdata. Försök igen.");
     }
   }
-  function displayWeatherData(data) {
-    const cityName = data.name;
-    const country = data.sys.country;
-    const temperature = Math.round(data.main.temp);
-    const feelsLike = Math.round(data.main.feels_like);
-    const weatherDescription = data.weather[0].description;
-    const weatherIcon = data.weather[0].icon;
-    const humidity = data.main.humidity;
-    const windSpeed = data.wind.speed;
+}
+function displayWeatherData(data) {
+  const cityName = data.name;
+  const country = data.sys.country;
+  const temperature = Math.round(data.main.temp);
+  const feelsLike = Math.round(data.main.feels_like);
+  const weatherDescription = data.weather[0].description;
+  const weatherIcon = data.weather[0].icon;
+  const humidity = data.main.humidity;
+  const windSpeed = data.wind.speed;
 
-    const weatherHTML = `<div class="weather-card">
+  const weatherHTML = `<div class="weather-card">
         <h2>${cityName}, ${country}</h2>
         <div class="weather-main">
             <img src="https://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="${weatherDescription}">
@@ -143,14 +180,14 @@ async function getWeatherData(city) {
             <p>Wind speed: ${windSpeed}</p>
         </div>
     </div>`;
-    weatherElement.innerHTML = weatherHTML;
-  }
-
-  function showError(message) {
-    errorMessage.textContent = message;
-    weatherElement.innerHTML = "";
-  }
+  weatherElement.innerHTML = weatherHTML;
 }
+
+function showError(message) {
+  errorMessage.textContent = message;
+  weatherElement.innerHTML = "";
+}
+
 function fetchJSONData() {
   console.log("fetchJSONData anropas");
   fetch("https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=Leeds")
@@ -235,6 +272,19 @@ window.addEventListener("load", () => {
   backgroundButton.addEventListener("click", () => {
     fetchRandomBackground();
   });
+});
+
+const notesElement = document.getElementById("notes");
+
+notesElement.addEventListener("input", () => {
+  const notes = notesElement.value;
+  localStorage.setItem("userNotes", notes);
+});
+window.addEventListener("load", () => {
+  const savedNotes = localStorage.getItem("userNotes");
+  if (savedNotes) {
+    notesElement.value = savedNotes;
+  }
 });
 
 async function fetchRandomBackground() {
