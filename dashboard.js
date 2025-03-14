@@ -83,7 +83,7 @@ const weatherElement = document.getElementById("weather");
 const errorMessage = document.getElementById("error-message");
 
 window.addEventListener("load", () => {
-  getWeatherData("Tvååker");
+  //getWeatherData("Tvååker");
   getWeatherByGeo();
 });
 
@@ -118,7 +118,7 @@ async function getWeatherByCoordinates(lat, long) {
     weatherElement.innerHTML = "<p>Hämtar väder...</p>";
     errorMessage.textContent = "";
 
-    const url = `${BASE_URL}?lat=${lat}&long${long}&units=metric&appid=${API_KEY}`;
+    const url = `${BASE_URL}?lat=${lat}&lon=${long}&units=metric&appid=${API_KEY}`;
 
     const response = await fetch(url);
     if (!response.ok) {
