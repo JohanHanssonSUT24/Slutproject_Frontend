@@ -1,7 +1,18 @@
 function updateClock() {
   const clockElement = document.getElementById("clock");
   const now = new Date();
-  clockElement.textContent = now.toLocaleString("sv-SE");
+
+  const timeString = now.toLocaleTimeString("sv-SE", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  const dateString = now.toLocaleDateString("sv-SE", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
+  clockElement.innerHTML = `<span class="time">${timeString}</span><span class="date">${dateString}</span>`;
 }
 setInterval(updateClock, 1000);
 updateClock();

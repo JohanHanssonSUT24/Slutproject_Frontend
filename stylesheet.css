@@ -32,7 +32,6 @@ body {
   margin-top: 5%;
   margin-bottom: 75px;
   color: rgb(29, 31, 33);
-  text-shadow: 1px 1px 5px #1d1d1d;
 }
 #greeting h1 {
   font-size: 1.8rem;
@@ -58,6 +57,13 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.3);
+}
+#clock .time {
+  font-weight: bold;
+  margin-right: 20px;
+}
+#clock .date {
+  font-weight: normal;
 }
 .column {
   background-color: rgba(255, 255, 255, 0.1);
@@ -137,10 +143,8 @@ button:hover {
   align-items: center;
   justify-content: space-between;
   position: relative;
-  padding: 2px 0;
-  padding-left: 3px;
-  padding-right: 3px;
-  padding-bottom: 4px;
+  padding: 11px 10px;
+  margin-bottom: 4px;
 }
 #link-list div::before {
   content: "";
