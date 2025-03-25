@@ -273,7 +273,7 @@ function displayTeamData(team) {
       <p><strong>Arena:</strong> ${team.strStadium}</p>
       <p><strong>Kapacitet:</strong> ${team.intStadiumCapacity} personer</p>
       <p><strong>Liga:</strong> ${team.strLeague}</p>
-      <p><strong>Hemsida:</strong>${websiteDisplay}</p>  
+      <p><strong>Hemsida:</strong><br>${websiteDisplay}</p>  
       `;
 }
 window.addEventListener("load", () => {
