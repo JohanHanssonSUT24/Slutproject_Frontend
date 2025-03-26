@@ -193,7 +193,6 @@ function displayWeatherData(data) {
     </div>`;
   weatherElement.innerHTML = weatherHTML;
 }
-
 function showError(message) {
   errorMessage.textContent = message;
   weatherElement.innerHTML = "";
@@ -247,6 +246,8 @@ async function getTeamData() {
     if (teamData.teams && teamData.teams.length > 0) {
       const team = teamData.teams[0];
       displayTeamData(team);
+
+      localStorage.setItem("searchedTeam", teamName);
     } else {
       teamInfoElement.innerHTML = "<p>Inget lag hittades.</p>";
     }
@@ -255,6 +256,13 @@ async function getTeamData() {
     teamInfoElement.innerHTML = "<p>Kunde inte hämta lagdata. Försök igen.</p>";
   }
 }
+window.addEventListener("load", () => {
+  const savedTeam = localStorage.getItem("searchedTeam");
+  if (savedTeam) {
+    teamInput.value = savedTeam;
+    getTeamData();
+  }
+});
 function displayTeamData(team) {
   let websiteLink = team.strWebsite;
   if (
@@ -276,6 +284,7 @@ function displayTeamData(team) {
       <p><strong>Hemsida:</strong><br>${websiteDisplay}</p>  
       `;
 }
+
 window.addEventListener("load", () => {
   fetchRandomBackground();
   const backgroundButton = document.getElementById("background-button");
